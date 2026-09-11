@@ -18,3 +18,17 @@ barplot(
   xlab = "Customer Status",
   ylab = "Number of Customers"
 )
+
+mean(Customer_Churn_Records$Age[Customer_Churn_Records$Exited == 0])
+mean(Customer_Churn_Records$Age[Customer_Churn_Records$Exited == 1])
+
+boxplot(
+  Age ~ Exited,
+  data = Customer_Churn_Records,
+  names = c("Stayed", "Exited"),
+  main = "Age by Customer Churn Status",
+  xlab = "Customer Status",
+  ylab = "Age"
+)
+
+
