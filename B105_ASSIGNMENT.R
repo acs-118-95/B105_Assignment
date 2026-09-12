@@ -1,4 +1,7 @@
 # B105 Assignment
+library(readr)
+Customer_Churn_Records <- read_csv("Customer-Churn-Records.csv")
+
 dim(Customer_Churn_Records)
 names(Customer_Churn_Records)
 str(Customer_Churn_Records)
@@ -20,6 +23,7 @@ barplot(
 )
 
 mean(Customer_Churn_Records$Age[Customer_Churn_Records$Exited == 0])
+
 mean(Customer_Churn_Records$Age[Customer_Churn_Records$Exited == 1])
 
 boxplot(
@@ -38,16 +42,54 @@ sd(Customer_Churn_Records$Age[Customer_Churn_Records$Exited == 1])
 hist(
   Customer_Churn_Records$Age[Customer_Churn_Records$Exited == 0],
   main = "Age Distribution - Customers Who Stayed",
-  xlab = "Age"
+  xlab = "Age",
+  ylab = "Number of Customers"
 )
 
 hist(
   Customer_Churn_Records$Age[Customer_Churn_Records$Exited == 1],
   main = "Age Distribution - Customers Who Exited",
-  xlab = "Age"
+  xlab = "Age",
+  ylab = "Number of Customers"
 )
 
 t.test(
   Age ~ Exited,
+  data = Customer_Churn_Records
+)
+
+mean(Customer_Churn_Records$Balance[Customer_Churn_Records$Exited == 0])
+
+mean(Customer_Churn_Records$Balance[Customer_Churn_Records$Exited == 1])
+
+boxplot(
+  Balance ~ Exited,
+  data = Customer_Churn_Records,
+  names = c("Stayed", "Exited"),
+  main = "Balance by Customer Churn Status",
+  xlab = "Customer Status",
+  ylab = "Balance"
+)
+
+sd(Customer_Churn_Records$Balance[Customer_Churn_Records$Exited == 0])
+
+sd(Customer_Churn_Records$Balance[Customer_Churn_Records$Exited == 1])
+
+hist(
+  Customer_Churn_Records$Balance[Customer_Churn_Records$Exited == 0],
+  main = "Balance Distribution - Customers Who Stayed",
+  xlab = "Balance",
+  ylab = "Number of Customers"
+)
+
+hist(
+  Customer_Churn_Records$Balance[Customer_Churn_Records$Exited == 1],
+  main = "Balance Distribution - Customers Who Exited",
+  xlab = "Balance",
+  ylab = "Number of Customers"
+)
+
+t.test(
+  Balance ~ Exited,
   data = Customer_Churn_Records
 )
