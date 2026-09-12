@@ -31,4 +31,23 @@ boxplot(
   ylab = "Age"
 )
 
+sd(Customer_Churn_Records$Age[Customer_Churn_Records$Exited == 0])
 
+sd(Customer_Churn_Records$Age[Customer_Churn_Records$Exited == 1])
+
+hist(
+  Customer_Churn_Records$Age[Customer_Churn_Records$Exited == 0],
+  main = "Age Distribution - Customers Who Stayed",
+  xlab = "Age"
+)
+
+hist(
+  Customer_Churn_Records$Age[Customer_Churn_Records$Exited == 1],
+  main = "Age Distribution - Customers Who Exited",
+  xlab = "Age"
+)
+
+t.test(
+  Age ~ Exited,
+  data = Customer_Churn_Records
+)
